@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import f1_score, recall_score, confusion_matrix
+from imblearn.over_sampling import SMOTE
 
 # os.chdir(os.path.dirname(__file__))
 
@@ -59,6 +60,20 @@ def retrain():
     if os.path.exists("data/credit_data_new.csv"):
         # Cargar los datos
         data = pd.read_csv('data/credit_data_new.csv')
+        data = data.dropna()  # Eliminar nulos
+        data.rename(columns={
+    'SeriousDlqin2yrs': 'default_2yrs',
+    'RevolvingUtilizationOfUnsecuredLines': 'revolving_util',
+    'age': 'age',
+    'NumberOfTime30-59DaysPastDueNotWorse': 'past_due_30_59',
+    'DebtRatio': 'debt_ratio',
+    'MonthlyIncome': 'monthly_income',
+    'NumberOfOpenCreditLinesAndLoans': 'open_credit_lines',
+    'NumberOfTimes90DaysLate': 'past_due_90',
+    'NumberRealEstateLoansOrLines': 'real_estate_loans',
+    'NumberOfTime60-89DaysPastDueNotWorse': 'past_due_60_89',
+    'NumberOfDependents': 'dependents'
+    }, inplace=True)
 
         # Separar variables
         X = data.drop(columns=['default_2yrs'])
