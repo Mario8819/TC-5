@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import f1_score, recall_score, confusion_matrix
-from imblearn.over_sampling import SMOTE
+
 # os.chdir(os.path.dirname(__file__))
 
 app = Flask(__name__)
