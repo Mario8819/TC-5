@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
-    return "Bienvenido a mi API del modelo credits"
+    return "Bienvenido a la API grupo 4 del modelo credits"
 
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
